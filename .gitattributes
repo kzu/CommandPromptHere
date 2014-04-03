@@ -1,0 +1,7 @@
+# These are windows specific files which we may as well ensure are
+# always crlf on checkout
+*.inf text eol=crlf
+
+# Opt in known filetypes to always normalize line endings on checkin
+# and always use native endings on checkout
+*.md text
