@@ -1,0 +1,52 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[VSNet2012CmdHereInstall]
+CopyFiles = VS2012CmdHere.Files.Inf
+AddReg    = VS2012CmdHere.Reg
+
+[DefaultInstall]
+CopyFiles = VS2012CmdHere.Files.Inf
+AddReg    = VS2012CmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2012CmdHere.Files.Inf
+DelReg    = VS2012CmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="VS2012 CMD Prompt Here","",1
+
+[SourceDisksFiles]
+VS2012CmdHere.INF=55
+
+[DestinationDirs]
+VS2012CmdHere.Files.Inf = 17
+
+[VS2012CmdHere.Files.Inf]
+VS2012CmdHere.INF
+
+[VS2012CmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2012CmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2012CmdHere.inf"
+HKCR,Directory\Background\Shell\VS2012CmdHere,,,"%VS2012CmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2012CmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Shell\VS2012CmdHere,,,"%VS2012CmdHereAccel%"
+HKCR,Directory\Shell\VS2012CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\VsDevCmd.bat"""
+HKCR,Drive\Shell\VS2012CmdHere,,,"%VS2012CmdHereAccel%"
+HKCR,Drive\Shell\VS2012CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\VsDevCmd.bat"""
+
+[VS2012CmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2012CmdHere
+HKCR,Drive\Shell\VS2012CmdHere
+HKCR,Directory\Background\Shell\VS2012CmdHere
+
+[Strings]
+VS2012CmdHereName="Developer Command Prompt Here for VS2012"
+VS2012CmdHereAccel="VS 2012 Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2012CmdHere"

@@ -1,0 +1,52 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[VSNet2010CmdHereInstall]
+CopyFiles = VS2010CmdHere.Files.Inf
+AddReg    = VS2010CmdHere.Reg
+
+[DefaultInstall]
+CopyFiles = VS2010CmdHere.Files.Inf
+AddReg    = VS2010CmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2010CmdHere.Files.Inf
+DelReg    = VS2010CmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="VS2010 CMD Prompt Here","",1
+
+[SourceDisksFiles]
+VS2010CmdHere.INF=55
+
+[DestinationDirs]
+VS2010CmdHere.Files.Inf = 17
+
+[VS2010CmdHere.Files.Inf]
+VS2010CmdHere.INF
+
+[VS2010CmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2010CmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2010CmdHere.inf"
+HKCR,Directory\Background\Shell\VS2010CmdHere,,,"%VS2010CmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2010CmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat"""
+HKCR,Directory\Shell\VS2010CmdHere,,,"%VS2010CmdHereAccel%"
+HKCR,Directory\Shell\VS2010CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat"""
+HKCR,Drive\Shell\VS2010CmdHere,,,"%VS2010CmdHereAccel%"
+HKCR,Drive\Shell\VS2010CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat"""
+
+[VS2010CmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2010CmdHere
+HKCR,Drive\Shell\VS2010CmdHere
+HKCR,Directory\Background\Shell\VS2010CmdHere
+
+[Strings]
+VS2010CmdHereName="Developer Command Prompt Here for VS2010"
+VS2010CmdHereAccel="VS 2010 Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2010CmdHere"
