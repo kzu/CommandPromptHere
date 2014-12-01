@@ -1,0 +1,52 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[VSNet2012CmdHereInstall]
+CopyFiles = VS2015CmdHere.Files.Inf
+AddReg    = VS2015CmdHere.Reg
+
+[DefaultInstall]
+CopyFiles = VS2015CmdHere.Files.Inf
+AddReg    = VS2015CmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2015CmdHere.Files.Inf
+DelReg    = VS2015CmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="VS2015 CMD Prompt Here","",1
+
+[SourceDisksFiles]
+VS2015CmdHere.INF=55
+
+[DestinationDirs]
+VS2015CmdHere.Files.Inf = 17
+
+[VS2015CmdHere.Files.Inf]
+VS2015CmdHere.INF
+
+[VS2015CmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2015CmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2015CmdHere.inf"
+HKCR,Directory\Background\Shell\VS2015CmdHere,,,"%VS2015CmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2015CmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Shell\VS2015CmdHere,,,"%VS2015CmdHereAccel%"
+HKCR,Directory\Shell\VS2015CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"""
+HKCR,Drive\Shell\VS2015CmdHere,,,"%VS2015CmdHereAccel%"
+HKCR,Drive\Shell\VS2015CmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat"""
+
+[VS2015CmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2015CmdHere
+HKCR,Drive\Shell\VS2015CmdHere
+HKCR,Directory\Background\Shell\VS2015CmdHere
+
+[Strings]
+VS2015CmdHereName="Developer Command Prompt Here for VS2015"
+VS2015CmdHereAccel="VS 2015 Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2015CmdHere"
