@@ -1,0 +1,48 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = VS2017EntCmdHere.Files.Inf
+AddReg    = VS2017EntCmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2017EntCmdHere.Files.Inf
+DelReg    = VS2017EntCmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="%VS2017EntCmdHereName%","",1
+
+[SourceDisksFiles]
+vs2017cmdhere-enterprise.inf=55
+
+[DestinationDirs]
+VS2017EntCmdHere.Files.Inf = 17
+
+[VS2017EntCmdHere.Files.Inf]
+VS2017EntCmdHere.INF
+
+[VS2017EntCmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2017EntCmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2017EntCmdHere.inf"
+HKCR,Directory\Background\Shell\VS2017EntCmdHere,,,"%VS2017EntCmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2017EntCmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Shell\VS2017EntCmdHere,,,"%VS2017EntCmdHereAccel%"
+HKCR,Directory\Shell\VS2017EntCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\VsDevCmd.bat"""
+HKCR,Drive\Shell\VS2017EntCmdHere,,,"%VS2017EntCmdHereAccel%"
+HKCR,Drive\Shell\VS2017EntCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\VsDevCmd.bat"""
+
+[VS2017EntCmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2017EntCmdHere
+HKCR,Drive\Shell\VS2017EntCmdHere
+HKCR,Directory\Background\Shell\VS2017EntCmdHere
+
+[Strings]
+VS2017EntCmdHereName="Developer Command Prompt Here for VS2017 Enterprise"
+VS2017EntCmdHereAccel="VS 2017 Enterprise Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2017EntCmdHere"

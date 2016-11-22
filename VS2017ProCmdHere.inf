@@ -1,0 +1,48 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = VS2017ProCmdHere.Files.Inf
+AddReg    = VS2017ProCmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2017ProCmdHere.Files.Inf
+DelReg    = VS2017ProCmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="%VS2017ProCmdHereName%","",1
+
+[SourceDisksFiles]
+vs2017cmdhere-enterprise.inf=55
+
+[DestinationDirs]
+VS2017ProCmdHere.Files.Inf = 17
+
+[VS2017ProCmdHere.Files.Inf]
+VS2017ProCmdHere.INF
+
+[VS2017ProCmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2017ProCmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2017ProCmdHere.inf"
+HKCR,Directory\Background\Shell\VS2017ProCmdHere,,,"%VS2017ProCmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2017ProCmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Shell\VS2017ProCmdHere,,,"%VS2017ProCmdHereAccel%"
+HKCR,Directory\Shell\VS2017ProCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"""
+HKCR,Drive\Shell\VS2017ProCmdHere,,,"%VS2017ProCmdHereAccel%"
+HKCR,Drive\Shell\VS2017ProCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\Tools\VsDevCmd.bat"""
+
+[VS2017ProCmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2017ProCmdHere
+HKCR,Drive\Shell\VS2017ProCmdHere
+HKCR,Directory\Background\Shell\VS2017ProCmdHere
+
+[Strings]
+VS2017ProCmdHereName="Developer Command Prompt Here for VS2017 Professional"
+VS2017ProCmdHereAccel="VS 2017 Professional Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2017ProCmdHere"
