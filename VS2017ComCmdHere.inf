@@ -30,11 +30,11 @@ VS2017ComCmdHere.INF
 HKLM,%UDHERE%,DisplayName,,"%VS2017ComCmdHereName%"
 HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2017ComCmdHere.inf"
 HKCR,Directory\Background\Shell\VS2017ComCmdHere,,,"%VS2017ComCmdHereAccel%"
-HKCR,Directory\Background\Shell\VS2017ComCmdHere\command,,,"%11%\cmd.exe /k cd ""%V"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Background\Shell\VS2017ComCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
 HKCR,Directory\Shell\VS2017ComCmdHere,,,"%VS2017ComCmdHereAccel%"
-HKCR,Directory\Shell\VS2017ComCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"""
+HKCR,Directory\Shell\VS2017ComCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
 HKCR,Drive\Shell\VS2017ComCmdHere,,,"%VS2017ComCmdHereAccel%"
-HKCR,Drive\Shell\VS2017ComCmdHere\command,,,"%11%\cmd.exe /k cd ""%1"" && ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"""
+HKCR,Drive\Shell\VS2017ComCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"" && pushd ""%1"""
 
 [VS2017ComCmdHereUninstall.Reg]
 HKLM,%UDHERE%
