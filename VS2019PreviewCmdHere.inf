@@ -1,0 +1,48 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = VS2019PreviewCmdHere.Files.Inf
+AddReg    = VS2019PreviewCmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2019PreviewCmdHere.Files.Inf
+DelReg    = VS2019PreviewCmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="%VS2019PreviewCmdHereName%","",1
+
+[SourceDisksFiles]
+vs2019cmdhere-enterprise.inf=55
+
+[DestinationDirs]
+VS2019PreviewCmdHere.Files.Inf = 17
+
+[VS2019PreviewCmdHere.Files.Inf]
+VS2019PreviewCmdHere.INF
+
+[VS2019PreviewCmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2019PreviewCmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2019PreviewCmdHere.inf"
+HKCR,Directory\Background\Shell\VS2019PreviewCmdHere,,,"%VS2019PreviewCmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2019PreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
+HKCR,Directory\Shell\VS2019PreviewCmdHere,,,"%VS2019PreviewCmdHereAccel%"
+HKCR,Directory\Shell\VS2019PreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
+HKCR,Drive\Shell\VS2019PreviewCmdHere,,,"%VS2019PreviewCmdHereAccel%"
+HKCR,Drive\Shell\VS2019PreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\Tools\VsDevCmd.bat"" && pushd ""%1"""
+
+[VS2019PreviewCmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2019PreviewCmdHere
+HKCR,Drive\Shell\VS2019PreviewCmdHere
+HKCR,Directory\Background\Shell\VS2019PreviewCmdHere
+
+[Strings]
+VS2019PreviewCmdHereName="Developer Command Prompt Here for VS2019 Preview"
+VS2019PreviewCmdHereAccel="VS 2019 Preview Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2019PreviewCmdHere"
