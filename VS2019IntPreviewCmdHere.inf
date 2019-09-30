@@ -1,0 +1,48 @@
+;
+; "CMD Prompt Here" PowerToy
+;
+; Copyright 1996 Microsoft Corporation
+
+[version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = VS2019IntPreviewCmdHere.Files.Inf
+AddReg    = VS2019IntPreviewCmdHere.Reg
+
+[DefaultUnInstall]
+DelFiles  = VS2019IntPreviewCmdHere.Files.Inf
+DelReg    = VS2019IntPreviewCmdHereUninstall.Reg
+
+[SourceDisksNames]
+55="%VS2019IntPreviewCmdHereName%","",1
+
+[SourceDisksFiles]
+vs2019cmdhere-intpreview.inf=55
+
+[DestinationDirs]
+VS2019IntPreviewCmdHere.Files.Inf = 17
+
+[VS2019IntPreviewCmdHere.Files.Inf]
+VS2019IntPreviewCmdHere.INF
+
+[VS2019IntPreviewCmdHere.Reg]
+HKLM,%UDHERE%,DisplayName,,"%VS2019IntPreviewCmdHereName%"
+HKLM,%UDHERE%,UninstallString,,"rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUnInstall 132 %17%\VS2019IntPreviewCmdHere.inf"
+HKCR,Directory\Background\Shell\VS2019IntPreviewCmdHere,,,"%VS2019IntPreviewCmdHereAccel%"
+HKCR,Directory\Background\Shell\VS2019IntPreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\IntPreview\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
+HKCR,Directory\Shell\VS2019IntPreviewCmdHere,,,"%VS2019IntPreviewCmdHereAccel%"
+HKCR,Directory\Shell\VS2019IntPreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\IntPreview\Common7\Tools\VsDevCmd.bat"" && pushd ""%V"""
+HKCR,Drive\Shell\VS2019IntPreviewCmdHere,,,"%VS2019IntPreviewCmdHereAccel%"
+HKCR,Drive\Shell\VS2019IntPreviewCmdHere\command,,,"cmd.exe /k call ""C:\Program Files (x86)\Microsoft Visual Studio\2019\IntPreview\Common7\Tools\VsDevCmd.bat"" && pushd ""%1"""
+
+[VS2019IntPreviewCmdHereUninstall.Reg]
+HKLM,%UDHERE%
+HKCR,Directory\Shell\VS2019IntPreviewCmdHere
+HKCR,Drive\Shell\VS2019IntPreviewCmdHere
+HKCR,Directory\Background\Shell\VS2019IntPreviewCmdHere
+
+[Strings]
+VS2019IntPreviewCmdHereName="Developer Command Prompt Here for VS2019 IntPreview"
+VS2019IntPreviewCmdHereAccel="VS 2019 IntPreview Prompt"
+UDHERE="Software\Microsoft\Windows\CurrentVersion\Uninstall\VS2019IntPreviewCmdHere"
